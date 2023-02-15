@@ -122,6 +122,40 @@ public class UserDataService {
     }
 
     /**
+     * Add note uuid for user
+     * @param userUid
+     * @param noteUid
+     */
+    public void addNoteUid(String userUid, String noteUid) {
+
+        log.debug("Adding note uuid to list for user:[{}]", userUid);
+
+        UserEntity userEntity = userRepository.findByUuid(UUID.fromString(userUid))
+                .orElseThrow(() -> new EntityNotFoundException("Not found user by uuid:["+ userUid +"]"));
+
+        userEntity.getNoteIds().add(noteUid);
+
+        userRepository.save(userEntity);
+    }
+
+    /**
+     * Remove note uuid from user
+     * @param userUid
+     * @param noteUid
+     */
+    public void removeNoteUid(String userUid, String noteUid) {
+
+        log.debug("Removing note uuid from list for user:[{}]", userUid);
+
+        UserEntity userEntity = userRepository.findByUuid(UUID.fromString(userUid))
+                .orElseThrow(() -> new EntityNotFoundException("Not found user by uuid:["+ userUid +"]"));
+
+        userEntity.getNoteIds().removeIf(noteId -> noteId.equals(noteUid));
+
+        userRepository.save(userEntity);
+    }
+
+    /**
      * Delete user by uuid
      * @param userUid
      */
