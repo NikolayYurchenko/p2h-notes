@@ -1,5 +1,6 @@
 package com.p2h.notes.service;
 
+import com.p2h.notes.model.UserAuthResponse;
 import com.p2h.notes.model.UserRequest;
 import com.p2h.notes.model.UserResponse;
 
@@ -11,6 +12,20 @@ public interface UserService {
      * @return
      */
     UserResponse create(UserRequest userRequest);
+
+    /**
+     * Register user
+     * @param userRequest
+     * @return
+     */
+    UserAuthResponse register(UserRequest userRequest);
+
+    /**
+     * Login user by secret key
+     * @param secretKey
+     * @return
+     */
+    UserAuthResponse login(String secretKey);
 
     /**
      * Find information about user by uuid

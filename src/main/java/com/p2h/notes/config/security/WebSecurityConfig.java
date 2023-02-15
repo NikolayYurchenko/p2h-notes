@@ -16,6 +16,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenAuthenticationFilter jwtTokenAuthenticationFilter;
 
     private static final String[] AUTH_WHITELIST = {
+            "/api/users/register",
+            "/api/users/login",
             // -- swagger ui
             "/swagger-resources/**",
             "/swagger-ui.html",

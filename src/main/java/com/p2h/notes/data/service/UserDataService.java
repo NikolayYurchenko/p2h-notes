@@ -9,7 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -17,22 +20,26 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserDataService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     /**
      * Create user
      * @param userRequest
      * @return
      */
+    @Transactional
     public UserResponse create(UserRequest userRequest) {
 
         log.debug("Creating user from data:[{}]", userRequest);
+
+        this.checkIsUserExistBySecretKey(userRequest.getSecretKey());
 
         UserEntity userEntity = UserEntity.builder()
                 .uuid(UUID.randomUUID())
                 .name(userRequest.getName())
                 .noteIds(new ArrayList<>())
                 .secretKey(userRequest.getSecretKey())
+                .createdAt(LocalDateTime.now())
                 .build();
 
         UserEntity savedUser = userRepository.save(userEntity);
@@ -123,5 +130,17 @@ public class UserDataService {
         log.debug("Deleting user by uuid:[{}]", userUid);
 
         userRepository.deleteByUuid(UUID.fromString(userUid));
+    }
+
+    public void checkIsUserExistBySecretKey(String secretKey) {
+
+        log.info("Checking user with the same secret key:[{}]", secretKey);
+
+        Optional<UserEntity> user = userRepository.findBySecretKey(secretKey);
+
+        if(user.isPresent()) {
+
+            throw new RuntimeException("User with secret key:["+ secretKey +"], already exist");
+        }
     }
 }
