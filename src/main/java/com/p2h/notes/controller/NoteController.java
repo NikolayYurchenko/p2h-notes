@@ -23,7 +23,7 @@ public class NoteController {
 
     private final NoteService noteService;
 
-    @PostMapping
+    @PostMapping("/create")
     @SneakyThrows
     @ApiOperation("Create note")
     public NoteResponse create(@RequestBody @Valid NoteRequest request) {
