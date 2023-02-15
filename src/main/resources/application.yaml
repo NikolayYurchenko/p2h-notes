@@ -18,3 +18,9 @@ spring:
     property-naming-strategy: SNAKE_CASE
     mapper:
       ACCEPT_CASE_INSENSITIVE_ENUMS: true
+
+notes-manager:
+  base:
+    settings:
+      jwt-secret: secretKey
+      jwt-time-expiration: '36000000'
