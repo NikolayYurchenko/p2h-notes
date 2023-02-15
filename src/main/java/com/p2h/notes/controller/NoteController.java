@@ -1,7 +1,7 @@
 package com.p2h.notes.controller;
 
 import com.p2h.notes.model.*;
-import com.p2h.notes.service.NoteService;
+import com.p2h.notes.service.contract.NoteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

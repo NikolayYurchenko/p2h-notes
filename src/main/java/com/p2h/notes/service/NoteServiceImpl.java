@@ -3,6 +3,7 @@ package com.p2h.notes.service;
 import com.p2h.notes.data.service.NoteDataService;
 import com.p2h.notes.model.NoteRequest;
 import com.p2h.notes.model.NoteResponse;
+import com.p2h.notes.service.contract.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

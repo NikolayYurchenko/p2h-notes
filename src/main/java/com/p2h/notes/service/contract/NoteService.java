@@ -1,4 +1,4 @@
-package com.p2h.notes.service;
+package com.p2h.notes.service.contract;
 
 import com.p2h.notes.model.NoteRequest;
 import com.p2h.notes.model.NoteResponse;

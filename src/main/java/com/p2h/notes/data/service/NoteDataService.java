@@ -1,11 +1,9 @@
 package com.p2h.notes.data.service;
 
 import com.p2h.notes.data.entity.NoteEntity;
-import com.p2h.notes.data.entity.UserEntity;
 import com.p2h.notes.data.repository.NoteRepository;
 import com.p2h.notes.model.NoteRequest;
 import com.p2h.notes.model.NoteResponse;
-import com.p2h.notes.model.UserResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

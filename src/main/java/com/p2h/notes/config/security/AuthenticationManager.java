@@ -2,10 +2,9 @@ package com.p2h.notes.config.security;
 
 import com.p2h.notes.model.UserPrincipal;
 import com.p2h.notes.model.UserResponse;
-import com.p2h.notes.service.UserService;
+import com.p2h.notes.service.contract.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwsHeader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

@@ -5,6 +5,7 @@ import com.p2h.notes.data.service.UserDataService;
 import com.p2h.notes.model.UserAuthResponse;
 import com.p2h.notes.model.UserRequest;
 import com.p2h.notes.model.UserResponse;
+import com.p2h.notes.service.contract.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

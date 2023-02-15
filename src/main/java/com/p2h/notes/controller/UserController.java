@@ -4,7 +4,7 @@ import com.p2h.notes.model.UserAuthResponse;
 import com.p2h.notes.model.UserPrincipal;
 import com.p2h.notes.model.UserRequest;
 import com.p2h.notes.model.UserResponse;
-import com.p2h.notes.service.UserService;
+import com.p2h.notes.service.contract.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

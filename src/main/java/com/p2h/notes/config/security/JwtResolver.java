@@ -1,6 +1,5 @@
 package com.p2h.notes.config.security;
 
-import com.p2h.notes.service.UserService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
