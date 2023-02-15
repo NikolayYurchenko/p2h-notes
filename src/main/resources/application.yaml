@@ -1,0 +1,20 @@
+logging:
+  level.root.: info
+  level.com.p2h: debug
+
+server:
+  port: 5000
+  compression:
+    enabled: true
+
+spring:
+  application:
+    name: notes-manager
+  data:
+    mongodb:
+      uri: mongodb://${$DB_USER_NAME:root}:${$DB_USER_PASSWORD:admin}@${$DB_HOST:localhost}:${$DB_PORT:27017}/${$DB_NAME:notes-manager}?authSource=admin
+  jackson:
+    default-property-inclusion: NON_EMPTY
+    property-naming-strategy: SNAKE_CASE
+    mapper:
+      ACCEPT_CASE_INSENSITIVE_ENUMS: true

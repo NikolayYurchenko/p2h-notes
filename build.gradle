@@ -1,7 +1,27 @@
+buildscript {
+	ext {
+		springBootVersion = '2.5.2'
+		dockerRegistryName = '127.0.0.1:5000' /** YOUR DOCKER REGISTRY HERE **/
+		netDevhStarterVersion = '2.9.0.RELEASE'
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "com.palantir.gradle.docker:gradle-docker:0.25.0"
+	}
+}
+
 plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'com.google.protobuf' version '0.8.12'
+	id 'org.sonarqube' version '2.7'
 	id 'java'
-	id 'org.springframework.boot' version '3.0.2'
-	id 'io.spring.dependency-management' version '1.1.0'
+	id 'java-library'
+	id 'com.palantir.docker' version '0.25.0'
 }
 
 group = 'com.p2h'
