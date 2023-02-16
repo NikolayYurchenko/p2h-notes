@@ -77,7 +77,7 @@ public class NoteDataService {
 
         log.debug("Searching for all notes");
 
-        return NoteResponse.instance(noteRepository.findAll());
+        return NoteResponse.instance(noteRepository.findAllByOrderByCreatedAtDesc());
     }
 
     /**

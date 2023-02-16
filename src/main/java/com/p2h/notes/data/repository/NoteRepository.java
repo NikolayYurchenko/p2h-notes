@@ -25,6 +25,12 @@ public interface NoteRepository extends MongoRepository<NoteEntity, String> {
     List<NoteEntity> findAllByUserUid(String userUid);
 
     /**
+     * Find all notes by desc
+     * @return
+     */
+    List<NoteEntity> findAllByOrderByCreatedAtDesc();
+
+    /**
      * Delete note by uuid
      * @param noteUid
      */
