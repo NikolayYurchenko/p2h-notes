@@ -64,18 +64,18 @@ public class NoteController {
     @ApiOperation("Add like for note")
     public void addLike(@PathVariable @NotBlank String noteUid, @AuthenticationPrincipal UserPrincipal principal ) {
 
-        log.info("Request for add like for note by uuid:[{}]", noteUid);
+        log.info("Request for add like for note by uuid:[{}]. User:[{}]", noteUid, principal.getUserUid());
 
-        noteService.addLike(noteUid);
+        noteService.addLike(principal.getUserUid(), noteUid);
     }
 
     @PutMapping("/remove-like/{noteUid}")
     @ApiOperation("Remove like for note")
     public void removeLike(@PathVariable @NotBlank String noteUid, @AuthenticationPrincipal UserPrincipal principal ) {
 
-        log.info("Request for remove like for note by uuid:[{}]", noteUid);
+        log.info("Request for remove like for note by uuid:[{}]. User:[{}]", noteUid, principal.getUserUid());
 
-        noteService.removeLike(noteUid);
+        noteService.removeLike(principal.getUserUid(), noteUid);
     }
 
     @DeleteMapping("/{noteUid}")

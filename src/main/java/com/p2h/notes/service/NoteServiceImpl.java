@@ -1,5 +1,6 @@
 package com.p2h.notes.service;
 
+import com.p2h.notes.data.redis.UserLikesRepository;
 import com.p2h.notes.data.service.NoteDataService;
 import com.p2h.notes.model.NoteRequest;
 import com.p2h.notes.model.NoteResponse;
@@ -13,8 +14,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoteServiceImpl implements NoteService {
 
-
     private final NoteDataService noteDataService;
+
+    private final UserLikesRepository userLikesRepository;
 
     @Override
     public NoteResponse create(NoteRequest noteRequest) {
@@ -41,15 +43,29 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void addLike(String noteUid) {
+    public void addLike(String userUid, String noteUid) {
 
-        noteDataService.addLike(noteUid);
+        boolean isAlreadySetLike = userLikesRepository.isUserLikeThisNote(userUid, noteUid);
+
+        if(!isAlreadySetLike) {
+
+            noteDataService.addLike(noteUid);
+
+            userLikesRepository.rememberLikeForNote(userUid, noteUid);
+        }
     }
 
     @Override
-    public void removeLike(String noteUid) {
+    public void removeLike(String userUid, String noteUid) {
 
-        noteDataService.removeLike(noteUid);
+        boolean isAlreadySetLike = userLikesRepository.isUserLikeThisNote(userUid, noteUid);
+
+        if(isAlreadySetLike) {
+
+            noteDataService.removeLike(noteUid);
+
+            userLikesRepository.forgetLikeForNote(userUid, noteUid);
+        }
     }
 
     @Override

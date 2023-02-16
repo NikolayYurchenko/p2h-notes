@@ -57,6 +57,7 @@ dependencies {
 	/**
 	 * Third party & others
 	 */
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
 	implementation 'jakarta.validation:jakarta.validation-api:2.0.2'

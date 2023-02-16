@@ -18,6 +18,8 @@ spring:
     property-naming-strategy: SNAKE_CASE
     mapper:
       ACCEPT_CASE_INSENSITIVE_ENUMS: true
+  redis:
+    url: ${REDIS_URI:redis://localhost:6379}
 
 notes-manager:
   base:

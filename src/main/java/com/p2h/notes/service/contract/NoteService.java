@@ -37,14 +37,16 @@ public interface NoteService {
     /**
      * Add like for note
      * @param noteUid
+     * @param userUid
      */
-    void addLike(String noteUid);
+    void addLike(String userUid, String noteUid);
 
     /**
      * Remove like for note
      * @param noteUid
+     * @param userUid
      */
-    void removeLike(String noteUid);
+    void removeLike(String userUid, String noteUid);
 
     /**
      * Update note by uuid
