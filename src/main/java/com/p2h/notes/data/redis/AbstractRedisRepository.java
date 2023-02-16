@@ -8,13 +8,9 @@ import java.util.Optional;
 @Slf4j
 public class AbstractRedisRepository {
 
-    protected final String prefix;
-
     protected final RedisTemplate<String, Boolean> redisTemplate;
 
-    public AbstractRedisRepository(RedisTemplate<String, Boolean> redisTemplate, String prefix) {
-
-        this.prefix = prefix;
+    public AbstractRedisRepository(RedisTemplate<String, Boolean> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
@@ -36,11 +32,6 @@ public class AbstractRedisRepository {
         Optional<Boolean> value = Optional.ofNullable(redisTemplate.opsForValue().get(key));
 
         return value.orElse(false);
-    }
-
-    protected String fullName(String name) {
-
-        return this.prefix + ":" + name;
     }
 }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class UserLikesRepository extends AbstractRedisRepository {
 
     public UserLikesRepository(RedisTemplate<String, Boolean> redisTemplate) {
-        super(redisTemplate, "user:likes");
+        super(redisTemplate);
     }
 
     /**
